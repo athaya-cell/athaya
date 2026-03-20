@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Website Resep Nusantara</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#fff0f5;
+}
+
+/* HEADER */
+header{
+background:linear-gradient(to bottom,#ffd6dc 0%,#ffffff 70%);
+color:black;
+text-align:center;
+padding:35px 25px;
+border-radius: 25px;
+margin-bottom: 30px;
+box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+font-size:18px;
+font-weight:bold;
+}
+
+/* LAYOUT */
+.container{
+display:grid;
+grid-template-columns:220px 1fr 260px;
+gap:15px;
+padding:15px;
+}
+
+/* MENU */
+.menu{
+background:#ffd6e7;
+padding:15px;
+border-radius:12px;
+}
+
+.menu a{
+display:block;
+background:white;
+margin:8px 0;
+padding:10px;
+text-decoration:none;
+color:black;
+border-radius:8px;
+font-weight:bold;
+}
+
+.menu a:hover{
+background:#ffeaf2;
+}
+
+/* AREA RESEP */
+.resep-area{
+background-image: url("background.jpeg");
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+padding:20px;
+border-radius:12px;
+min-height:600px;
+}
+
+.resep{
+display:none;
+}
+
+.resep:target{
+display:block;
+}
+
+/* default tampil rendang */
+.resep-area:not(:has(.resep:target)) #rendang{
+display:block;
+}
+
+/* gambar */
+.resep img{
+width:280px;
+display:block;
+margin:auto;
+border-radius:12px;
+margin-bottom:10px;
+}
+
+/* AREA RATING */
+.rating{
+background:#ffe6f0;
+padding:15px;
+border-radius:12px;
+display:flex;
+flex-direction:column;
+gap:18px
+}
+
+/* tiap rating */
+.rating-box{
+display:none;
+}
+
+/* tampilkan sesuai menu */
+.container:has(#rendang:target) #rating-rendang,
+.container:has(#ketoprak:target) #rating-ketoprak,
+.container:has(#pempek:target) #rating-pempek,
+.container:has(#sate-lilit-bali:target) #rating-sate-lilit-bali,
+.container:has(#pecel:target) #rating-pecel,
+.container:has(#laksa:target) #rating-laksa,
+.container:has(#sate-padang:target) #rating-sate-padang,
+.container:has(#kerak-telur:target) #rating-kerak-telur,
+.container:has(#kolak:target) #rating-kolak,
+.container:has(#soto-ayam-lamongan:target) #rating-soto-ayam-lamongan,
+.container:has(#serabi-solo:target) #rating-serabi-solo,
+.container:has(#getuk:target) #rating-getuk,
+.container:has(#bubur-sumsum:target) #rating-bubur-sumsum,
+.container:has(#wajik-ketan:target) #rating-wajik-ketan,
+.container:has(#kue-pancong:target) #rating-kue-pancong{
+display:block;
+}
+
+
+/* default rating rendang */
+.container:not(:has(.resep:target)) #rating-rendang{
+display:block;
+}
+
+/* CHAT */
+.chat{
+background:white;
+padding:12px 15px;
+border-radius:18px;
+max-width:80%;
+margin:20px auto;
+position:relative;
+box-shadow:0 3px 8px rgba(0,0,0,0.1);
+}
+
+.bintang{
+font-size:18px;
+margin-bottom:6px;
+}
+
+.komen{
+margin-bottom:6px;
+}
+
+.nama{
+font-size:12px;
+color:gray;
+text-align:right;
+margin-top:5px;
+}
+
+/* FOOTER */
+footer{
+background:#ff7aa8;
+color:white;
+text-align:center;
+padding:12px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Resep Masakan Daerah Indonesia</h1>
+    <marquee>Setiap Daerah Punya Rasa, Setiap Rasa Punya Cerita</marquee>
+
+    <p>
+        Siapa sih yang bisa nolak enaknya masakan Indonesia? 🤤 
+        Dari Sabang sampai Merauke, tiap daerah punya makanan andalan yang rasanya auto bikin nagih.
+        Rempahnya berasa, rasanya rame, dan ternyata banyak yang bikinnya nggak seribet yang kita kira.
+    </p>
+
+    <p>
+        Cocok banget buat kamu yang lagi kangen masakan rumah atau pengin nyobain menu baru 
+        biar nggak makan itu-itu aja. Mau yang berkuah, pedes nampol, gurih, sampe manis legit—lengkap.
+        Jadi ya… siapin perut dan langsung gas ke dapur 😆🍴
+    </p>
+</header>
+
+<div class="container">
+
+<!-- MENU -->
+<div class="menu">
+<h2 align="center">Daftar Makanan</h2>
+<a href="#rendang">Rendang</a>
+<a href="#ketoprak">Ketoprak</a>
+<a href="#pempek">Pempek</a>
+<a href="#sate-lilit-bali">Sate Lilit Bali</a>
+<a href="#pecel">Pecel</a>
+<a href="#laksa">Laksa</a>
+<a href="#sate-padang">Sate Padang</a>
+<a href="#kerak-telur">Kerak Telur</a>
+<a href="#kolak">Kolak</a>
+<a href="#soto-ayam-lamongan">Soto Ayam Lamongan</a>
+<a href="#serabi-solo">Serabi Solo</a>
+<a href="#getuk">Getuk</a>
+<a href="#bubur-sumsum">Bubur Sumsum</a>
+<a href="#wajik-ketan">Wajik Ketan</a>
+<a href="#kue-pancong">Kue Pancong</a>
+</div>
+
+<!-- RESEP -->
+<div class="resep-area">
+
+<div id="rendang" class="resep">
+<h2 align="center">Rendang</h2>
+      <img src="rendang3.jpeg" width="220px">
+      <p>Masakan khas Minangkabau dari daging sapi dan rempah-rempah
+        yang dimasak lama hingga kaya rasa.</p>
+      <p><b>Asal:</b> Sumatera Barat</p>
+      
+      <p><b>Bahan Utama:</b></p>
+       <ul>
+           <li>1 kg daging sapi (bagian paha / sengkel), potong besar</li>
+           <li>1 liter santan kental (dari 2 butir kelapa)</li>
+           <li>2 lembar daun kunyit, simpulkan</li>
+           <li>4 lembar daun jeruk</li> 
+           <li>2 batang serai, memarkan</li>
+           <li>2 lembar daun salam</li>
+           <li>1 ruas lengkuas, memarkan</li>
+         </ul>
+       <p><b>Bumbu Halus:</b></p>
+         <ul>
+           <li>10 siung bawang merah</li>
+           <li>6 siung bawang putih</li>
+           <li>5 buah cabai merah besar</li>
+           <li>10 buah cabai merah keriting (sesuai selera)</li>
+           <li>3 butir kemiri, sangrai</li>
+           <li>1 ruas jahe</li>
+           <li>1 ruas kunyit</li>   
+         </ul>
+       <p><b>Bumbu Tambahan:</b></p>
+         <ul>
+           <li>1 sdm ketumbar bubuk</li>
+           <li>1 sdt jintan (opsional)</li>
+           <li>Garam secukupnya</li>
+           <li>Gula secukupnya</li>
+         </ul>
+
+      <p><b>Cara Membuat:</b></p>
+      <ol>
+           <li>Haluskan semua bumbu halus hingga lembut.</li>
+           <li>Masukkan santan ke dalam wajan besar, lalu tambahkan bumbu halus, serai, daun jeruk, daun salam, daun kunyit, dan lengkuas.</li>
+           <li>Masak dengan api sedang sambil terus diaduk hingga santan mendidih dan tidak pecah.</li>
+           <li>Masukkan potongan daging sapi, aduk rata.</li>
+           <li>Masak dengan api kecil sambil sesekali diaduk hingga santan mengering dan bumbu meresap (±3–4 jam).</li>
+           <li>Tambahkan garam dan gula, koreksi rasa.</li>
+           <li>Masak terus hingga rendang berwarna cokelat gelap dan minyak keluar.</li>
+           <li>Angkat dan sajikan rendang selagi hangat.</li> 
+       </ol>
+</div>
+
+
+<div id="ketoprak" class="resep">
+<h2 align="center">Ketoprak</h2>
+  <img src="ketoprak3.jpeg" width="220">
+  <p>Ketoprak lezat ala Betawi, membuat harimu lebih bewarna dan lidahmu lebih bergoyang seru</p>
+  <p><b>Asal:</b> Betawi</p>
+   
+
+   <p><b>Bahan:</b></p>
+       <ul>
+           <li>200 gram tahu goreng</li>
+           <li>100 gram toge, rebus sebentar</li>
+           <li>100 gram bihun rebus</li>
+           <li>2 buah ketupat</li> 
+         </ul>
+         
+         <p><b>Saus Kacang:</b></p>
+         <ul>
+           <li>100 gram kacang goreng yang dihaluskan</li>
+           <li>5 butir cabe rawit rebus (sesuai selera)</li>
+           <li>3 siung bawang putih</li>
+           <li>1 sdm gula merah</li>
+           <li>1 sdt garam</li>
+           <li>½ sdt penyedap rasa</li>
+           <li>100 ml air asam (100 ml air dengan ½ sdt asam jawa)</li>
+           <li>4 sdm kecap manis</li>
+         </ul>
+         
+         <p><b>Pelengkap:</b></p>
+         <ul>
+           <li>Bawang goreng</li>
+            <li>Kerupuk bawang</li>
+             <li>Telur dadar</li>
+              <li>Timun</li>
+         </ul>
+       
+
+      <p><b>Cara Membuat:</b></p>
+        <ol>
+           <li>Goreng kacang tanah hingga matang. Haluskan dengan chopper atau manual.</li>
+           <li>Celupkan potongan tahu ke larutan garam dan penyedap. Sambil menunggu tahu, kita bisa proses uleg bumbu ketoprak.</li>
+           <li>Di atas piring, uleg dan campurkan kacang yang sudah dihaluskan, cabe rawit rebus sesuai selera, bawang putih mentah, gula </li>
+           <li>Di atas piring, uleg dan campurkan kacang yang sudah dihaluskan, cabe rawit rebus sesuai selera, bawang putih mentah, gula merah, garam, penyedap dan air asam jawa. </li>
+           <li>Goreng tahu hingga berkulit sebagian. Rebus juga toge dan bihun.</li>
+           <li>Letakkan tahu, ketupat, toge, dan bihun, beri kecap manis lalu aduk rata bumbu dan isian ketoprak.</li>
+           <li>Sajikan dengan telur dadar, irisan timun, bawang goreng, dan kerupuk bawang.</li>
+       </ol>
+      </div>
+
+<div id="pempek" class="resep">
+<h2 align="center">Pempek</h2>
+  <img src="pempek3.jpeg" width="220">
+  <p>Rasakan sensasi Pempek asli Palembang: kulit kenyal, isi ikan lembut, dan saus cuko yang bikin ketagihan di setiap gigitan!</p>
+        <p><b>Asal:</b> Palembang</p>
+      <p><b>Bahan:</b></p>
+      <ul>
+        <li>500 gr ikan giling tenggiri</li>
+        <li>150-200 ml air es (sesuaikan)</li>
+        <li>250-300 gr tepung tapioka</li>
+        <li>1 butir telur</li>
+        <li>1/2 sdm garam</li>
+        <li>1/2 sdm gula</li>
+        <li>1/2 sdt penyedap</li>
+        <li>5 siung bawang putih</li>
+        <li>3 helai daun bawang</li>
+      </ul>
+      
+      <p><b>Cuko:</b></p>
+      <ul>
+        <li>200-250 gr gula merah</li>
+        <li>500 ml air</li>
+        <li>6 buah cabe rawit</li>
+        <li>3 siung bawang putih</li>
+        <li>2 sdt garam</li>
+        <li>1 sdm asam jawa</li>
+      </ul>
+      
+      <p><b>Cara Membuat Pempek:</b></p>
+      <ol>
+        <li>Haluskan bawang putih dan iris daun bawang. </li>
+         <li>Campurkan ikan tenggiri giling dengan bawang putih, garam, gula, dan penyedap.</li>
+         <li>Masukan telur, aduk rata lalu tambahkan air sedikit demi sedikit.</li>
+         <li>Tambahkan tepung tapioka sedikit sedikit, kemudian aduk perlahan hingga kalis.</li>
+         <li>Masukan daun bawang dan aduk rata.</li>
+         <li>Bentuk adonan sesuai selera (lenjer/bulat/kapal selam).</li>
+         <li>Rebus dalam air mendidih sampai mengapung (±15-20 menit), angkat dan tiriskan.</li>
+         <li>Goreng hingga kecokelatan sebelum disajikan.</li>
+       </ol>
+      <p><b>Cara Membuat Cuko:</b></p>
+      <ol>
+        <li>Rebus air dan gula merah sampai larut.</li>
+         <li>Haluskan cabai rawit dan bawang putih.</li>
+         <li>Masukan bumbu halus, garam, dan asam jawa ke dalam air gula.</li>
+         <li>Masak hingga mendidih dan sedikit mengental.</li>
+         <li>Saring lalu sajikan bersama pempek.</li>
+      </ol>
+ </div>
+
+<div id="sate-lilit-bali" class="resep">
+<h2 align="center">Sate Lilit Bali</h2>
+<img src="satelilit.jpg" width="220">
+<p>Satu gigitan sate lilit Bali, langsung berasa liburan ke Pulau Dewata—gurih, wangi, dan penuh rempah!</p>
+<p><b>asal:</b> Bali</p>
+
+ <p><b>Bahan:</b></p>
+        <ul>
+         <li>500 gr ayam giling</li>
+        <li>80 ml Sasa Santan Omega 3</li>
+         <li>1 sdt garam</li>
+        </ul>
+
+        <p><b>Bumbu Halus:</b></p>
+        <ul>
+          <li>8 siung bawang merah</li>
+          <li>5 siung bawang putih</li>
+          <li>5 buah cabai keriting</li>
+          <li>3 buah cabai rawit</li>
+          <li>3 batang serai</li>
+          <li>1 ruas lengkuas</li>
+          <li>1 ruas kunyit</li>
+          <li>1 ruas jahe</li>
+          <li>1 ruas kencur</li>
+          <li>5 lembar daun jeruk</li>
+          <li>1 sdt ketumbar</li>
+          <li>½ sdt merica</li>
+        </ul>
+         
+         <p><b>Cara Membuat:</b></p>
+        <ol>
+          <li>Campurkan ayam, kelapa parut, gula merah, Sasa Santan Omega 3, garam, dan bumbu halus.</li>
+          <li>Tempelkan adonan di tusuk sate pipihkan.</li>
+          <li>Panggang hingga matang.</li>
+        </ol>
+    </div>
+
+<div id="pecel" class="resep">
+<h2 align="center">Pecel</h2>
+<img src="pecel3.jpeg" width="220">
+<p>Nikmati pecel autentik Jawa dengan aneka sayuran rebus dan siraman sambal kacang khas yang kaya rempah dan cita rasa.</p>
+<p><b>asal:</b> Jawa Barat</p>
+
+<p><b>Bahan Sayur:</b></p>
+        <ul>
+          <li>Bayam</li>
+          <li>Kangkung</li>
+          <li>Tauge</li>
+          <li>Kacang panjang</li>
+          <li>Daun singkong (opsional)</li>
+        </ul>
+        
+        <p><b>Bahan Bumbu Kacang:</b></p>
+        <ul>
+          <li>250 g kacang tanah, goreng</li>
+          <li>3 siung bawang putih</li>
+          <li>5 buah cabai merah (sesuai selera)</li>
+          <li>3 lembar daun jeruk</li>
+          <li>2 cm kencur</li>
+          <li>1 sdt asam jawa</li>
+          <li>1–2 sdm gula merah, sisir</li>
+          <li>Garam secukupnya</li>
+          <li>Air hangat secukupnya</li>
+        </ul>
+
+        <p><b>Cara Membuat:</b></p>
+         <ol>
+           <li>Haluskan kacang tanah, bawang putih, cabai, daun jeruk, dan kencur.</li>
+           <li>Tambahkan gula merah, asam jawa, dan garam.</li>
+           <li>Tuang air hangat sedikit demi sedikit sampai saus kental.</li>
+           <li>Tata sayuran di piring, siram sambal kacang di atasnya.</li>
+         </ol>
+       </div>
+
+<div id="laksa" class="resep">
+<h2 align="center">Laksa</h2>
+<img src="laksa3.jpeg" width="220">
+  <p>Dari kuahnya yang harum hingga suapan terakhir yang membuat rindu, itulah laksa.</p>
+        <p><b>asal:</b> Banten</p>
+
+         <p><b>Bahan Utama:</b></p>
+        <ul>
+          <li>200 gr mie laksa</li>
+          <li>100 gr kelapa parut (sudah disangrai)</li>
+          <li>150 gr kacang hijau (sudah direbus)</li>
+          <li>4 potong ayam</li>
+          <li>1 buah kentang (potong kotak kecil)</li>
+          <li>2 lembar daun salam</li>
+          <li>Garam</li>
+          <li>Lada</li>
+          <li>1.5 liter santan</li>
+          <li>2 butir telur rebus</li>
+          <li>2 lembar daun kucai</li>
+        </ul>
+        
+        <p><b>Bumbu halus:</b></p>
+        <ul>
+          <li>8 siung bawang merah</li>
+          <li>6 siung bawang putih</li>
+          <li>5 buah cabai merah (sesuai selera)</li>
+          <li>1 sdt ketumbar bubuk</li>
+          <li>2 ruas jahe</li>
+          <li>1 sdt asam jawa</li>
+          <li>1 ruas lengkuas</li>
+          <li>1 sdt kunyit bubuk</li>
+        </ul>
+
+        <p><b>Cara Membuat:</b></p>
+         <ol>
+           <li>Tumis bumbu halus hingga harum.</li>
+           <li>Masukan kelapa sangrai, aduk rata.</li>
+           <li>Masukan ayam dan santan.</li>
+           <li>Masukan daun salam.</li>
+           <li>Saat ayam sudah setengah matang, masukan kentang.</li>
+           <li>masukan garam, lada dan koreksi rasa.</li>
+           <li>Saat ayam sudah matang, angkat dan sisihkan untuk di panggang.</li>
+           <li>Masukan kembali ayam ke dalam kuah, lalu tambahkan kacang hijau.</li>
+           <li>Tunggu hingga bumbu meresap dan air sedikit berkurang, lalu matikan api.</li>
+           <li>Tata mie laksa di atas mangkuk, tambahkan potongan ayam dan telur rebus, 
+           lalu siram dengan kuah.</li>
+           <li>Tambahkan potongan daun kucai dan laksa siap dinimkati.</li>
+         </ol>
+       </div>
+
+<div id="sate-padang" class="resep">
+<h2 align="center">Sate padang</h2>
+<img src="satepadang3.jpeg" width="220">
+
+ <p>Rasakan kelezatan sate Padang khas Minang: daging empuk disiram saus kental berbumbu rempah yang kaya rasa dan pedasnya bikin nagih.</p>
+        <p><b>asal:</b> Minangkabau</p>
+
+        <p><b>Bahan:</b></p>
+        <ul>
+          <li>1 kg daging sapi (pilih bagian yang tidak berlemak)</li>
+          <li>50 ml kecap manis</li>
+          <li>2 sdm minyak goreng</li>
+          <li>2 siung bawang putih, haluskan</li>
+          <li>1 sdt merica bubuk</li>
+          <li>1 sdt garam</li>
+          <li>1 sdt ketumbar bubuk</li>
+          <li>1 sdt kunyit bubuk</li>
+          <li>1 sdt cabe bubuk (opsional, sesuaikan dengan tingkat kepedasan yang diinginkan)</li>
+          <li>10 tusuk sate</li>
+        </ul>
+
+        <p><b>Cara Membuat:</b></p>
+        <ol>
+          <li>Persiapkan bahan-bahan marinasi, termasuk bumbu-bumbu seperti bawang merah, bawang putih, jahe, serai, dan rempah-rempah lainnya.</li>
+          <li>Haluskan bumbu-bumbu tersebut dengan menggunakan blender atau ulekan sampai membentuk pasta yang halus.</li>
+          <li> Campurkan bumbu yang telah dihaluskan dengan bahan lainnya, seperti kecap manis, minyak, dan perasa lainnya.</li>
+          <li>Ambil daging yang sudah dipotong-potong menjadi ukuran sate, dan rendam dalam campuran bumbu marinasi tersebut. Marinasi hingga 2 jam.</li>
+          <li>Tusuk daging yang telah dimarinasi ke tusuk sate.</li>
+          <li>Panggang di atas bara api atau panggangan hingga matang dan berwarna kecoklatan.</li>
+        </ol>
+      </div>
+
+<div id="kerak-telur" class="resep">
+<h2 align="center">Kerak telur</h2>
+<img src="keraktelur3.jpeg" width="220">
+
+<p>makanan legendaris dengan lapisan ketan renyah, telur gurih dan taburan kelapa sangrai yang harum.</p>
+        <p><b>asal:</b> Jakarta</p>
+
+         <p><b>Bahan:</b></p>
+        <ul>
+          <li>100 gr beras ketan putih (rendam 1 jam, tiriskan)</li>
+          <li>2 butir telur ayam / bebek</li>
+          <li>2 sdm ebi (rendam & haluskan)</li>
+          <li>2 sdm kelapa parut sangrai</li>
+          <li>1 sdm bawang goreng</li>
+          <li>Garam dan merica secukupnya</li>
+        </ul>
+
+        <p><b>Cara Membuat:</b></p>
+         <ol>
+           <li>Panaskan wajan anti lengket, beri sedikit minyak.</li>
+           <li>Masukan 2-3 sdm ketan, ratakan tipis.</li>
+           <li>Kocok telur, masukan ebi, garam, dan merica, tuang di atas ketan.</li>
+           <li>Masak sampai bagian bawah kering dan renyah.</li>
+           <li>Balik wajan atau tutup sampai matang.</li>
+           <li>Taburi kelapa sangrai & bawang goreng, kerak telur siap dinikmati.</li>
+         </ol>
+       </div>
+
+       <div id="kolak" class="resep">
+<h2 align="center">Kolak</h2>
+  <img src="kolak.jfif" width="220">
+  <p>Ubi empuk, pisang lembut, kuah santan manis—siap bikin nambah tanpa sadar!</p>
+        <p><b>Asal:</b> Pulau Jawa</p>
+
+        <p><b>Bahan-Bahan:</b></p>
+        <ul>
+         <li>5 buah pisang kepok / pisang raja (potong serong)</li>
+         <li>1 buah ubi jalar (potong dadu)</li>
+         <li>100–150 gr gula merah (iris halus)</li>
+         <li>2 sdm gula pasir (sesuai selera)</li>
+         <li>1 liter santan</li>
+         <li>2 lembar daun pandan (ikat simpul)</li>
+         <li>Sejumput garam</li>
+         <li>700 ml air</li>
+        </ul>
+
+        <p><b>Cara Membuat:</b></p>
+        <ol>
+          <li>Rebus air bersama gula merah dan daun pandan sampai gula larut.</li>
+          <li>Masukkan ubi, rebus sampai setengah empuk.</li>
+          <li>Tambahkan pisang, masak sampai ubi dan pisang empuk.</li>
+          <li>Tuangkan santan, aduk perlahan agar tidak pecah.</li>
+          <li>Tambahkan gula pasir dan sedikit garam.</li>
+          <li>Masak dengan api kecil sambil diaduk sampai mendidih perlahan.</li>
+          <li>Koreksi rasa, lalu matikan api.</li>
+        </ol>
+</div>
+
+<div id="soto-ayam-lamongan" class="resep">
+<h2 align="center">Soto Ayam Lamongan</h2>
+  <img src="soto3.jpeg" width="220">
+
+  <p>Kuah kuning yang gurih dengan taburan koya yang bikin nagih.</p>
+        <p><b>asal:</b> Lamongan Jawa Timur</p>
+
+         <p><b>Bahan Utama:</b></p>
+        <ul>
+          <li>1 ekor ayam</li>
+          <li>2 liter air</li>
+          <li>2 batang serai (digeprek)</li>
+          <li>3 lembar daun salam</li>
+          <li>2 lembar daun jeruk</li>
+          <li>1 batang daun bawang (diiris)</li>
+          <li>Garam dan gula secukupnya</li>
+        </ul>
+        
+        <p><b>Bumbu halus:</b></p>
+        <ul>
+          <li>6 siung bawang merah</li>
+          <li>4 siung bawang putih</li>
+          <li>2 buah kunyit dan jahe</li>
+          <li>3 butir kemiri sangrai</li>
+          <li>1 sdt ketumbar</li>
+          <li>1 sdt merica</li>
+        </ul>
+
+        <p><b>Pelengkap:</b></p>
+        <ul>
+          <li>Bihun (seduh air panas)</li>
+          <li>Kol (yang sudah diiris)</li>
+          <li>Telur rebus</li>
+          <li>Bawang goreng</li>
+          <li>Jeruk nipis</li>
+          <li>Sambal</li>
+        </ul>
+
+        <p><b>Koya:</b></p>
+        <ul>
+          <li>3 sdm kerupuk udang</li>
+          <li>1 sdm bawang putih goreng (blender kering)</li>
+        </ul>
+
+        <p><b>Cara Membuat:</b></p>
+         <ol>
+           <li>Rebus ayam sampai empeuk, angkat lalu suwir dagingnya, sisihkan kaldunya.</li>
+           <li>Tumis bumbu halus, masukan serai, daun dalam dan daun jeruk sampai harum.</li>
+           <li>Masukan tumisan ke dalam kaldu ayam, masak 10-15 menit.</li>
+           <li>Tambahkan garam dan gula, lalu masukan ayam suwir dan daun bawang.</li>
+           <li>Siapkan mangkuk, isi dengan bihun, kol, ayam suwir, lalu siram dengan kuah panas.</li>
+           <li>Taburi koya dan bawang goreng, beri perasan jeruk nipis, soto siap disajikan.</li>
+         </ol>
+       </div>
+
+<div id="serabi-solo" class="resep">
+<h2 align="center">Serabi Solo</h2>
+  <img src="serabi3.jpeg" width="220">
+
+  <p>lembut, legit dan hangat di hati. Sederhana tapi selalu bikin ingin tambah lagi.</p>
+        <p><b>asal:</b> Surakarta Jawa Tengah</p>
+
+         <p><b>Bahan:</b></p>
+        <ul>
+          <li>200 gr tepung beras</li>
+          <li>2 sdm tepung terigu</li>
+          <li>500 ml santan hangat</li>
+          <li>2 sdm gula pasir</li>
+          <li>1 sdt garam</li>
+          <li>1 butir telur</li>
+          <li>1 sdt ragi instan</li>
+        </ul>
+
+        <p><b>Cara Membuat:</b></p>
+         <ol>
+           <li>Campur tepung beras, terigu, gula, garam, dan ragi.</li>
+           <li>Masukan telur dan santan sedikit demi sedikit, aduk hingga halus.</li>
+           <li>Diamkan adonan 30-60 menit sampai sedikit berbuih.</li>
+           <li>Panaskan teflon kecil, tuang adonan tipis.</li>
+           <li>Tambahkan topping (opsional).</li>
+           <li>Masak dengan api kecil sampai matang (tidak perlu dibalik).</li>
+           <li>Serabi siap disajikan.</li>
+         </ol>
+       </div>
+
+<div id="getuk" class="resep">
+<h2 align="center">Getuk</h2>
+  <img src="getuk3.jpeg" width="220">
+
+  <p>Singkong halus, gula merah manis, kenangan manis pun hadir di tiap gigitan.</p>
+        <p>Asal: Magelang</p>
+
+        <p><b>Bahan-Bahan:</b></p>
+        <ul>
+         <li>500 gr singkong, kupas dan potong-potong</li>
+        <li>100 gr gula merah (iris halus)</li>
+        <li>50 gr kelapa parut, kukus sebentar</li>
+        <li>Sejumput garam</li>
+        <li>1 sdm mentega (opsional, buat aroma lebih gurih)</li>
+        </ul>
+
+        <p><b>Cara Membuat:</b></p>
+        <ol>
+          <li>Rebus singkong hingga empuk, tiriskan.</li>
+          <li>Haluskan singkong dengan ulekan atau tumbuk sampai lembut.</li>
+          <li>Campur gula merah yang sudah diiris ke singkong halus, aduk rata.</li>
+          <li>Tambahkan sedikit garam dan mentega, aduk lagi sampai tercampur.</li>
+          <li>Bentuk sesuai selera (bulat, kotak, atau dipipihkan).</li>
+          <li>Taburi kelapa parut kukus di atasnya.</li>
+          <li>Sajikan hangat atau suhu ruang.</li>
+        </ol>
+</div>
+
+<div id="bubur-sumsum" class="resep">
+<h2 align="center">Bubur Sumsum</h2>
+  <img src="sumsum3.jpeg" width="150">
+
+   <p>Semangkuk bubur sumsum, rasa tradisional yang bikin hati tenang</p>
+        <p><b>Asal:</b> Pulau Jawa</p>
+
+        <p><b>Bahan-Bahan:</b></p>
+        <ul>
+         <li>100 gr tepung beras</li>
+         <li>600 ml santan (dari 1 butir kelapa)</li>
+         <li>Sejumput garam</li>
+        </ul>
+
+        <p><b>Saus Gula Merah:</b></p>
+        <ul>
+         <li>100 gr gula merah, serut halus</li>
+         <li>100 ml air</li>
+        <li>1 lembar daun pandan</li>
+      </ul>
+
+     <p><b>Cara Membuat:</b></p>
+    <ol>
+      <li><b>Bubur Sumsum:</b> Campur tepung beras, santan, dan sejumput garam. Masak dengan api sedang sambil diaduk perlahan sampai mengental. Tuang di mangkuk saji.</li>
+      <li><b>Saus Gula Merah:</b> Rebus air, gula merah, dan daun pandan sampai gula larut. Saring jika perlu.</li>
+      <li><b>Penyajian:</b> Siram saus gula merah di atas bubur sumsum. Sajikan hangat atau dingin sesuai selera.</li>
+    </ol>
+  </div>
+
+  <div id="wajik-ketan" class="resep">
+<h2 align="center">Wajik Ketan</h2>
+<img src="wajik3.jpeg" width="220">
+    <p>Camilan tradisional ketan manis yang legit, aroma gula merahnya bikin rindu masa kecil!</p>
+    <p><b>Asal:</b> Sumatera Utara / Jawa / Aceh</p>
+
+    <p><b>Bahan-bahan:</b></p>
+    <ul>
+      <li>250 gr ketan, rendam 3 jam, tiriskan</li>
+      <li>200 gr gula merah, sisir halus</li>
+      <li>200 ml santan kental</li>
+      <li>1 lembar daun pandan</li>
+      <li>Sejumput garam</li>
+    </ul>
+
+    <p><b>Cara Membuat:</b></p>
+    <ol>
+      <li>Kukus ketan hingga matang, sisihkan.</li>
+      <li>Masak gula merah dengan santan, garam, dan daun pandan hingga larut dan mendidih.</li>
+      <li>Masukkan ketan kukus, aduk rata hingga santan dan gula meresap ke dalam ketan.</li>
+      <li>Masak dengan api kecil sambil terus diaduk hingga adonan kental dan lengket.</li>
+      <li>Tuang ke loyang, ratakan, tekan perlahan. Biarkan dingin, kemudian potong-potong sesuai selera.</li>
+    </ol>
+  </div>
+
+  <div id="kue-pancong" class="resep">
+<h2 align="center">Wajik Ketan</h2>
+ <img src="pancong3.jpeg" width="220">
+    <p>Kue tradisional Betawi/Jawa Barat, harum santan, lembut dan manis pas di mulut!</p>
+    <p><b>Asal:</b> Betawi / Jawa Barat</p>
+
+    <p><b>Bahan-bahan:</b></p>
+    <ul>
+      <li>200 gr tepung beras</li>
+      <li>100 gr kelapa parut</li>
+      <li>150 ml santan</li>
+      <li>50 gr gula pasir (sesuai selera)</li>
+      <li>Sejumput garam</li>
+      <li>Minyak untuk olesan cetakan</li>
+    </ul>
+
+    <p><b>Cara Membuat:</b></p>
+    <ol>
+      <li>Campur tepung beras, kelapa parut, gula, garam, dan santan hingga menjadi adonan kental.</li>
+      <li>Panaskan cetakan kue pancong, oles dengan sedikit minyak.</li>
+      <li>Tuang adonan ke cetakan, jangan terlalu penuh.</li>
+      <li>Panggang dengan api sedang hingga permukaan kecokelatan dan matang.</li>
+      <li>Angkat dan sajikan hangat. Bisa dinikmati polos atau taburan gula halus.</li>
+    </ol>
+  </div>
+
+</div>
+
+<!-- RATING -->
+<div class="rating">
+<h2 align="center">Rating Recook</h2>
+
+<div id="rating-rendang" class="rating-box">
+<div class="chat kiri">
+<div class="bintang">⭐⭐⭐⭐</div>
+<div class="komen">Rasanya mirip beli dirumah makan, besoknya di panasin lagi malah makin mantap, fix recook lagi.</div>
+<div class="nama"> mba Salsa</div>
+</div>
+
+<div class="chat kiri">
+<div class="bintang">⭐⭐⭐⭐⭐</div>
+<div class="komen">Ambo cubo pakai daging sanduang lamua, alah empuak bana hasilnyo. Memang paralu sabar maso masaknyo, tapi hasilnyo lumayan mantap</div>
+<div class="nama">Praz Teguh</div>
+</div>
+
+<div class="chat kiri">
+<div class="bintang">⭐⭐⭐⭐</div>
+<div class="komen">enak banget. Dagingnya empuk, bumbunya nyerep sampe dalem. Makan pake nasi anget udah nggak bisa berhenti.</div>
+<div class="nama">bang Ucup</div>
+</div>
+
+<div class="chat kiri">
+<div class="bintang">⭐⭐⭐</div>
+<div class="komen">Maaf ya di aku agak keasinan dikit, jadi harus nambah nasi banyak baru pas rasanya</div>
+<div class="nama">bu Lani</div>
+</div>
+
+</div>
+
+<div id="rating-ketoprak" class="rating-box">
+
+<div class="chat kiri">
+<div class="bintang">⭐⭐⭐⭐⭐</div>
+<div class="komen">Wihh bos, ketopraknya maknyus banget! Sambal kacangnya nendang, tahunya empuk, lontongnya pas bener. Langsung abis di rumah, gokil beneran dah.</div>
+<div class="nama">Babeh</div>
+</div>
+
+<div class="chat kanan">
+<div class="bintang">⭐⭐⭐⭐</div>
+<div class="komen">Resepnya gampang dipahami, tapi sambal kacangnya kurang pedes dikit . Tapi tetep enak lah, keluarga doyan.</div>
+<div class="nama">Dimas</div>
+</div>
+
+<div class="chat kiri">
+<div class="bintang">⭐⭐⭐⭐⭐</div>
+<div class="komen">Mantep neh resepnya,kayak yang di jual abang abang</div>
+<div class="nama">Rasya</div>
+</div>
+
+<div class="chat kanan">
+<div class="bintang">⭐⭐⭐⭐</div>
+<div class="komen">Baru coba langsung ketagihan, bumbu kacangnya medok banget.</div>
+<div class="nama">Reza</div>
+</div>
+
+</div>
+
+<div id="rating-pempek" class="rating-box">
+
+<div class="chat kiri">
+<div class="bintang">⭐⭐⭐⭐⭐</div>
+<div class="komen">Wihh, pempeknyo mantap bana! Ikannyo seger, kuah cuko pedes pas, di rumah langsung abis sakali makan.</div>
+<div class="nama">Dewang</div>
+</div>
+
+<div class="chat kanan">
+<div class="bintang">⭐⭐⭐⭐⭐</div>
+<div class="komen">Ambo coba pempek di pasar, lumayan enak lah 😅. Tapi kuahnyo kurang pedes bagi ambo, tapi keluarga masih bilang ena.</div>
+<div class="nama">Diva</div>
+</div>
+
+<div class="chat kiri">
+<div class="bintang">⭐⭐⭐⭐⭐</div>
+<div class="komen">Baru nyubo langsung ketagihan, cuko-nyo nampol cak ini, dak cukup satu porsi, kudu nambah lagi.</div>
+<div class="nama">Maya</div>
+</div>
+
+</div>
+
+<div id="rating-sate-lilit-bali" class="rating-box">
+
+<div class="chat kanan">
+<div class="bintang">⭐⭐⭐⭐⭐</div>
+<div class="komen">Sate lilit punika mantap pisan! Rasané bumbu nyo nyarengin daging, pedesnya pas. Ring rumah langsung abis sakali mangan.</div>
+<div class="nama">Jenifer</div>
+</div>
+
+<div class="chat kiri">
+<div class="bintang">⭐⭐⭐⭐⭐</div>
+<div class="komen">Gampang banget diikutin caranya,enak lagih rasanya.</div>
+<div class="nama">Sakha</div>
+</div>
+
+<div class="chat kiri">
+<div class="bintang">⭐⭐⭐⭐⭐</div>
+<div class="komen">Udah lama kangen masakan bali ehh nemu resep ini,mirip banget lagi rasanyaa.</div>
+<div class="nama">Anggie</div>
+</div>
+
+</div>
+
+<div id="rating-pecel" class="rating-box">
+
+<div class="chat kanan">
+<div class="bintang">⭐⭐⭐⭐</div>
+<div class="komen">Mantep bet inih resepnye.</div>
+<div class="nama">Mpok Dono</div>
+</div>
+
+<div class="chat kiri">
+<div class="bintang">⭐⭐⭐⭐</div>
+<div class="komen">Coba pecel di warung dekat rumah, lumayan enak. Tapi kacangnya kurang gurih bagi aku . Keluarga masih bilang oke kok.</div>
+<div class="nama">Rachel</div>
+</div>
+
+<div class="chat kiri">
+<div class="bintang">⭐⭐⭐⭐</div>
+<div class="komen">Enak nieh,salad versi Indonesia.</div>
+<div class="nama">Angga</div>
+</div>
+
+</div>
+
+<div id="rating-laksa" class="rating-box">
+
+<div class="chat kanan">
+<div class="bintang">⭐⭐⭐⭐</div>
+<div class="komen">Resep laksa-nya gampang dipahami, tapi kuahnya kurang kental dan pedas dikit. Tapi tetap enak lah, keluarga masih doyan</div>
+<div class="nama">Puspa</div>
+</div>
+
+<div class="chat kiri">
+<div class="bintang">⭐⭐⭐⭐⭐</div>
+<div class="komen">Laksa-nya juara! Kuah santannya gurih, mie-nya empuk, sambal dan toppingnya mantap banget 😋. Pasti bakal bikin lagi..</div>
+<div class="nama">Aisha</div>
+</div>
+
+<div class="chat kiri">
+<div class="bintang">⭐⭐⭐⭐</div>
+<div class="komen">Serius enak banget, kuahnya medok tapi ga eneg, makan siang langsung happy.</div>
+<div class="nama">Ayra</div>
+</div>
+
+</div>
+
+<div id="rating-sate-padang" class="rating-box">
+
+<div class="chat kanan">
+<div class="bintang">⭐⭐⭐⭐⭐</div>
+<div class="komen">Sate Padangnyo rancak bana! Kuahnyo kental jo gurih, dagingnyo empuk . Di rumah langsung habis sakali makan, mantap pisan!.</div>
+<div class="nama">Agung</div>
+</div>
+
+<div class="chat kiri">
+<div class="bintang">⭐⭐⭐⭐⭐</div>
+<div class="komen">Sate Padangnya juara! Dagingnyo empuk, kuahnyo kental jo mantap. Pantes lah direkomendasikan.</div>
+<div class="nama">Felisha</div>
+</div>
+
+</div>
+
+<div id="rating-kerak-telur" class="rating-box">
+
+<div class="chat kanan">
+<div class="bintang">⭐⭐⭐⭐</div>
+<div class="komen">Edisi lagi kangen Jakarte, iseng nyari resep eh muncul ini, mantap gapernah berubah rasanya.</div>
+<div class="nama">Mpok lala</div>
+</div>
+
+<div class="chat kiri">
+<div class="bintang">⭐⭐⭐⭐</div>
+<div class="komen">Jajanan legendaris yg biasanya ada di PRJ, mantap poll</div>
+<div class="nama">Riansyah</div>
+</div>
+
+</div>
+
+<div id="rating-kolak" class="rating-box">
+
+<div class="chat kanan">
+<div class="bintang">⭐⭐⭐⭐</div>
+<div class="komen">Masyaallahh,menunya wajib di recook sih buat buka puasa.</div>
+<div class="nama">Mama Aisyah</div>
+</div>
+
+<div class="chat kiri">
+<div class="bintang">⭐⭐⭐⭐</div>
+<div class="komen">Untung nemu resep ini,jadi gak perlu beli beli lagi dah di luar</div>
+<div class="nama">Wulan</div>
+</div>
+
+</div>
+
+<div id="rating-soto-ayam-lamongan" class="rating-box">
+
+<div class="chat kiri">
+<div class="bintang">⭐⭐⭐⭐⭐</div>
+<div class="komen">Kuahnya gurih banget, apalagi ditambah koya jadi makin mantap. Keluarga langsung nambah nasi.</div>
+<div class="nama">Rina</div>
+</div>
+
+<div class="chat kanan">
+<div class="bintang">⭐⭐⭐⭐</div>
+<div class="komen">Resepnya gampang diikuti, rasanya mirip soto Lamongan di warung langganan.</div>
+<div class="nama">Dimas</div>
+</div>
+
+<div class="chat kiri">
+<div class="bintang">⭐⭐⭐⭐⭐</div>
+<div class="komen">Baru pertama bikin soto sendiri dan hasilnya enak banget. Kuahnya wangi dan ayamnya empuk.</div>
+<div class="nama">Nadia</div>
+</div>
+
+<div class="chat kanan">
+<div class="bintang">⭐⭐⭐⭐</div>
+<div class="komen">Mantap! Koya kerupuknya bikin rasa kuahnya makin khas. Cocok dimakan pas cuaca dingin.</div>
+<div class="nama">Arif</div>
+</div>
+
+</div>
+
+<div id="rating-serabi-solo" class="rating-box">
+
+<div class="chat kiri">
+<div class="bintang">⭐⭐⭐⭐⭐</div>
+<div class="komen">Serabinya lembut banget dan pinggirannya sedikit renyah, rasanya mirip yang dijual di Solo.</div>
+<div class="nama">Nina</div>
+</div>
+
+<div class="chat kanan">
+<div class="bintang">⭐⭐⭐⭐</div>
+<div class="komen">Baru pertama coba bikin serabi, ternyata gampang. Dimakan hangat-hangat enak banget.</div>
+<div class="nama">Rafi</div>
+</div>
+
+<div class="chat kiri">
+<div class="bintang">⭐⭐⭐⭐⭐</div>
+<div class="komen">Aromanya wangi santan, rasanya legit dan lembut. Keluarga langsung habis dalam sekali makan.</div>
+<div class="nama">Salsa</div>
+</div>
+
+<div class="chat kanan">
+<div class="bintang">⭐⭐⭐⭐</div>
+<div class="komen">Resepnya simpel tapi hasilnya enak. Cocok buat camilan sore sambil minum teh.</div>
+<div class="nama">Dian</div>
+</div>
+
+</div>
+
+<div id="rating-getuk" class="rating-box">
+
+<div class="chat kiri">
+<div class="bintang">⭐⭐⭐⭐⭐</div>
+<div class="komen">Getuknya lembut banget, manisnya pas dan kelapa parutnya bikin rasanya makin gurih.</div>
+<div class="nama">Sinta</div>
+</div>
+
+<div class="chat kanan">
+<div class="bintang">⭐⭐⭐⭐</div>
+<div class="komen">Resepnya gampang diikuti, rasanya kayak jajanan pasar yang sering aku beli.</div>
+<div class="nama">Riko</div>
+</div>
+
+<div class="chat kiri">
+<div class="bintang">⭐⭐⭐⭐⭐</div>
+<div class="komen">Baru coba bikin sendiri di rumah, ternyata enak banget. Anak-anak juga langsung suka.</div>
+<div class="nama">Dewi</div>
+</div>
+
+<div class="chat kanan">
+<div class="bintang">⭐⭐⭐⭐</div>
+<div class="komen">Manisnya pas dan teksturnya lembut. Cocok buat camilan santai sore hari.</div>
+<div class="nama">Fajar</div>
+</div>
+
+</div>
+
+<div id="rating-bubur-sumsum" class="rating-box">
+
+  <div class="chat kiri">
+<div class="bintang">⭐⭐⭐⭐⭐</div>
+<div class="komen">Bubur sumsumnya lembut banget dan saus gula merahnya manisnya pas. Dimakan hangat enak banget.</div>
+<div class="nama">Rani</div>
+</div>
+
+<div class="chat kanan">
+<div class="bintang">⭐⭐⭐⭐</div>
+<div class="komen">Resepnya gampang diikuti, rasanya mirip bubur sumsum yang sering dijual di pasar.</div>
+<div class="nama">Bagas</div>
+</div>
+
+<div class="chat kiri">
+<div class="bintang">⭐⭐⭐⭐⭐</div>
+<div class="komen">Teksturnya halus dan gurih dari santannya kerasa banget. Keluarga pada suka.</div>
+<div class="nama">Nadia</div>
+</div>
+
+<div class="chat kanan">
+<div class="bintang">⭐⭐⭐⭐</div>
+<div class="komen">Sederhana tapi enak. Cocok buat camilan sore atau sarapan ringan.</div>
+<div class="nama">Rizky</div>
+</div>
+
+</div>
+
+<div id="rating-wajik-ketan" class="rating-box">
+
+  <div class="chat kiri">
+<div class="bintang">⭐⭐⭐⭐⭐</div>
+<div class="komen">Wajiknya legit banget, manis gula merahnya pas dan teksturnya kenyal enak.</div>
+<div class="nama">Ayu</div>
+</div>
+
+<div class="chat kanan">
+<div class="bintang">⭐⭐⭐⭐</div>
+<div class="komen">Resepnya gampang diikuti, rasanya mirip wajik yang sering ada di acara hajatan.</div>
+<div class="nama">Rendi</div>
+</div>
+
+<div class="chat kiri">
+<div class="bintang">⭐⭐⭐⭐⭐</div>
+<div class="komen">Aroma pandan dan gula merahnya wangi banget. Dimakan sama teh hangat jadi makin nikmat.</div>
+<div class="nama">Dina</div>
+</div>
+
+<div class="chat kanan">
+<div class="bintang">⭐⭐⭐⭐</div>
+<div class="komen">Teksturnya lembut dan manisnya pas, cocok buat camilan tradisional di rumah.</div>
+<div class="nama">Fahmi</div>
+</div>
+
+</div>
+
+<div id="rating-kue-pancong" class="rating-box">
+
+  <div class="chat kiri">
+<div class="bintang">⭐⭐⭐⭐⭐</div>
+<div class="komen">Kue pancongnya wangi banget dari santan dan kelapanya. Dimakan hangat enak banget.</div>
+<div class="nama">Nabila</div>
+</div>
+
+<div class="chat kanan">
+<div class="bintang">⭐⭐⭐⭐</div>
+<div class="komen">Resepnya simpel tapi rasanya mantap, mirip yang dijual abang-abang di pinggir jalan.</div>
+<div class="nama">Rian</div>
+</div>
+
+<div class="chat kiri">
+<div class="bintang">⭐⭐⭐⭐⭐</div>
+<div class="komen">Teksturnya lembut di dalam dan sedikit renyah di luar. Keluarga langsung suka.</div>
+<div class="nama">Lina</div>
+</div>
+
+<div class="chat kanan">
+<div class="bintang">⭐⭐⭐⭐</div>
+<div class="komen">Manisnya pas dan aroma kelapanya kerasa banget. Cocok buat teman ngopi sore.</div>
+<div class="nama">Doni</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<footer>
+© 2026 Website Resep Nusantara
+</footer>
+
+</body>
+</html>
